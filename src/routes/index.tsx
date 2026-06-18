@@ -13,6 +13,9 @@ import { Faq } from "@/components/landing/Faq";
 import giftWoman from "@/assets/gift-woman.png";
 import communityCakes from "@/assets/community-cakes.png";
 import productsWoman from "@/assets/products-woman.png";
+import limpezaWoman from "@/assets/limpeza-woman.png.asset.json";
+import confeitariaImg from "@/assets/confeitaria.png.asset.json";
+import chasImg from "@/assets/chas.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -98,7 +101,7 @@ function Hero() {
 
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:items-start">
             <a href="#planos" className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-rose-gradient px-7 py-4 text-sm font-semibold text-white shadow-rose transition hover:scale-[1.02] sm:w-auto">
-              Quero entrar por R$ 9,99
+              Conheça os planos
               <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
             </a>
             <a href="#como-funciona" className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-border bg-white/70 px-7 py-4 text-sm font-semibold text-foreground backdrop-blur transition hover:bg-white sm:w-auto">
@@ -286,9 +289,9 @@ function FutureVision() {
 /* ------------------- Benefits ------------------- */
 function Benefits() {
   const items = [
-    { icon: ShoppingBag, t: "Curso de Produtos de Limpeza Caseiros", d: "Sabão, amaciante, multiuso, desinfetante. Tudo testado, barato e que rende." },
-    { icon: Coffee, t: "Curso de Chás e Receitas Naturais", d: "Receitas para ansiedade, sono, imunidade e disposição — feitas em casa." },
-    { icon: Cake, t: "Curso de Confeitaria para Renda", d: "Bolos de pote, brigadeiros gourmet e doces que viram seu primeiro CNPJ." },
+    { img: limpezaWoman.url, t: "Curso de Produtos de Limpeza Caseiros", d: "Sabão, amaciante, multiuso, desinfetante. Tudo testado, barato e que rende." },
+    { img: chasImg, t: "Curso de Chás e Receitas Naturais", d: "Receitas para ansiedade, sono, imunidade e disposição — feitas em casa." },
+    { img: confeitariaImg.url, t: "Curso de Confeitaria para Renda", d: "Bolos de pote, brigadeiros gourmet e doces que viram seu primeiro CNPJ." },
   ];
   return (
     <section className="bg-background py-20 sm:py-24">
@@ -301,13 +304,15 @@ function Benefits() {
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {items.map((c, i) => (
-            <div key={i} className="reveal group relative overflow-hidden rounded-3xl border border-border/70 bg-white p-7 shadow-soft transition hover:-translate-y-1 hover:shadow-rose">
-              <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[color:var(--rose)]/20 transition group-hover:scale-125" />
-              <div className="relative grid h-14 w-14 place-items-center rounded-2xl bg-rose-gradient text-white shadow-rose">
-                <c.icon className="h-7 w-7" />
+            <div key={i} className="reveal group relative overflow-hidden rounded-3xl border border-border/70 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-rose">
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img src={c.img} alt={c.t} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
               </div>
-              <h3 className="relative mt-5 text-xl font-semibold">{c.t}</h3>
-              <p className="relative mt-2 text-sm text-foreground/70">{c.d}</p>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold">{c.t}</h3>
+                <p className="mt-2 text-sm text-foreground/70">{c.d}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -419,7 +424,7 @@ function PlansComparison() {
         <div className="mt-12 grid items-stretch gap-6 lg:grid-cols-2">
           {/* Initial */}
           <div className="reveal relative flex flex-col rounded-3xl border border-border/70 bg-white p-8 shadow-soft">
-            <h3 className="text-xl font-semibold">Plano Inicial</h3>
+            <h3 className="text-xl font-semibold">Apenas 3 Cursos</h3>
             <p className="mt-1 text-sm text-muted-foreground">Pagamento único — acesso vitalício</p>
             <div className="mt-6 flex items-end gap-2">
               <span className="text-5xl font-semibold tracking-tight">R$ 9,99</span>
@@ -439,7 +444,7 @@ function PlansComparison() {
                 </li>
               ))}
             </ul>
-            <a href="#cta" className="mt-8 inline-flex items-center justify-center rounded-full border-2 border-[color:var(--rose-deep)] px-6 py-3.5 text-sm font-semibold text-[color:var(--rose-deep)] transition hover:bg-[color:var(--rose)]/20">
+            <a href="https://pay.lowify.com.br/checkout?product_id=eIxbEJ" target="_blank" rel="noopener" className="mt-8 inline-flex items-center justify-center rounded-full border-2 border-[color:var(--rose-deep)] px-6 py-3.5 text-sm font-semibold text-[color:var(--rose-deep)] transition hover:bg-[color:var(--rose)]/20">
               Quero entrar por R$ 9,99
             </a>
           </div>
@@ -449,7 +454,9 @@ function PlansComparison() {
             <div className="absolute right-5 top-5 inline-flex items-center gap-1 rounded-full bg-gold-gradient px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white shadow-gold">
               <Crown className="h-3 w-3" /> Mais escolhido
             </div>
-            <h3 className="text-xl font-semibold">Comunidade Premium</h3>
+            <h3 className="inline-flex items-center gap-2 text-xl font-semibold">
+              Entrar na comunidade <Heart className="h-5 w-5 fill-white text-white" />
+            </h3>
             <p className="mt-1 text-sm text-white/80">Plano mensal — cancele quando quiser</p>
             <div className="mt-6 flex items-end gap-2">
               <span className="text-5xl font-semibold tracking-tight">R$ 37,99</span>
@@ -472,8 +479,8 @@ function PlansComparison() {
                 </li>
               ))}
             </ul>
-            <a href="#cta" className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-[color:var(--rose-deep)] shadow-gold transition hover:scale-[1.02]">
-              Quero fazer parte da Premium <ArrowRight className="h-4 w-4" />
+            <a href="https://pay.lowify.com.br/checkout?product_id=AaYK0I" target="_blank" rel="noopener" className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-[color:var(--rose-deep)] shadow-gold transition hover:scale-[1.02]">
+              Quero mudar de vida <ArrowRight className="h-4 w-4" />
             </a>
             <p className="mt-3 text-center text-[11px] text-white/70">
               * R$ 37,99 cobrados mensalmente. Cancele a qualquer momento.
@@ -508,7 +515,7 @@ function TestimonialsSection() {
 /* ------------------- What's Included ------------------- */
 function WhatsIncluded() {
   const items = [
-    { icon: PlayCircle, t: "Aulas em vídeo HD", d: "Curtas, diretas, sem enrolação." },
+    { icon: PlayCircle, t: "Tutoriais de fácil entendimento", d: "Curtos, diretos, sem enrolação." },
     { icon: ShoppingBag, t: "Aplicativo exclusivo", d: "Tudo na palma da sua mão." },
     { icon: MessageCircle, t: "Comunidade ativa", d: "Tira-dúvidas todos os dias." },
     { icon: Trophy, t: "Desafios mensais", d: "Para você não desistir no meio." },
@@ -569,7 +576,7 @@ function EntryBenefits() {
             <div className="grid h-14 w-14 place-items-center rounded-2xl bg-gold-gradient text-white">
               <Ticket className="h-7 w-7" />
             </div>
-            <h3 className="mt-4 text-xl font-semibold">Comunidade Premium</h3>
+            <h3 className="mt-4 text-xl font-semibold">Entrar na comunidade</h3>
             <p className="mt-1 text-sm text-muted-foreground">R$ 37,99/mês</p>
             <p className="mt-4 text-3xl font-semibold text-[color:var(--rose-deep)]">5 bilhetes</p>
             <p className="mt-1 text-sm text-foreground/70">para a rifa beneficente</p>
@@ -619,11 +626,11 @@ function FinalCta() {
             Todas se sentiram acolhidas. Agora é a sua vez.
           </p>
           <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <a href="#planos" className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-bold text-[color:var(--rose-deep)] shadow-gold transition hover:scale-[1.03] sm:w-auto">
+            <a href="https://pay.lowify.com.br/checkout?product_id=eIxbEJ" target="_blank" rel="noopener" className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-bold text-[color:var(--rose-deep)] shadow-gold transition hover:scale-[1.03] sm:w-auto">
               Entrar por R$ 9,99 <ArrowRight className="h-4 w-4" />
             </a>
-            <a href="#planos" className="inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-white/80 px-8 py-4 text-sm font-semibold text-white transition hover:bg-white/10 sm:w-auto">
-              Ver Comunidade Premium
+            <a href="https://pay.lowify.com.br/checkout?product_id=AaYK0I" target="_blank" rel="noopener" className="inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-white/80 px-8 py-4 text-sm font-semibold text-white transition hover:bg-white/10 sm:w-auto">
+              Entrar na comunidade <Heart className="h-4 w-4 fill-white text-white" />
             </a>
           </div>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-white/80">
@@ -654,7 +661,7 @@ function Footer() {
 function StickyCta() {
   return (
     <div className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-white/95 p-3 shadow-rose backdrop-blur sm:hidden">
-      <a href="#planos" className="flex w-full items-center justify-center gap-2 rounded-full bg-rose-gradient px-6 py-3.5 text-sm font-bold text-white">
+      <a href="https://pay.lowify.com.br/checkout?product_id=eIxbEJ" target="_blank" rel="noopener" className="flex w-full items-center justify-center gap-2 rounded-full bg-rose-gradient px-6 py-3.5 text-sm font-bold text-white">
         Quero entrar por R$ 9,99 <ArrowRight className="h-4 w-4" />
       </a>
     </div>
