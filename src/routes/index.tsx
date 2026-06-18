@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  Sparkles, Heart, ShoppingBag, Coffee, Cake, Users, Trophy, Gift,
+  Sparkles, Heart, ShoppingBag, Users, Trophy, Gift,
   Check, Shield, Lock, Clock, Star, ArrowRight, Zap, Flower2, Sun,
   HandHeart, Ticket, MessageCircle, Crown, PlayCircle,
 } from "lucide-react";
