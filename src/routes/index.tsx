@@ -13,8 +13,8 @@ import { Faq } from "@/components/landing/Faq";
 import giftWoman from "@/assets/gift-woman.png";
 import communityCakes from "@/assets/community-cakes.png";
 import productsWoman from "@/assets/products-woman.png";
-import limpezaWoman from "@/assets/limpeza-woman.png.asset.json";
-import confeitariaImg from "@/assets/confeitaria.png.asset.json";
+import limpezaWoman from "@/assets/limpeza-woman.png";
+import confeitariaImg from "@/assets/confeitaria.png";
 import chasImg from "@/assets/chas.jpg";
 
 export const Route = createFileRoute("/")({
@@ -289,9 +289,9 @@ function FutureVision() {
 /* ------------------- Benefits ------------------- */
 function Benefits() {
   const items = [
-    { img: limpezaWoman.url, t: "Curso de Produtos de Limpeza Caseiros", d: "Sabão, amaciante, multiuso, desinfetante. Tudo testado, barato e que rende." },
+    { img: limpezaWoman, t: "Curso de Produtos de Limpeza Caseiros", d: "Sabão, amaciante, multiuso, desinfetante. Tudo testado, barato e que rende." },
     { img: chasImg, t: "Curso de Chás e Receitas Naturais", d: "Receitas para ansiedade, sono, imunidade e disposição — feitas em casa." },
-    { img: confeitariaImg.url, t: "Curso de Confeitaria para Renda", d: "Bolos de pote, brigadeiros gourmet e doces que viram seu primeiro CNPJ." },
+    { img: confeitariaImg, t: "Curso de Confeitaria para Renda", d: "Bolos de pote, brigadeiros gourmet e doces que viram seu primeiro CNPJ." },
   ];
   return (
     <section className="bg-background py-20 sm:py-24">
